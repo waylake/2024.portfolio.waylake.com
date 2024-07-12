@@ -1,6 +1,11 @@
 import { useCursorType } from "../hooks/useCursorType";
+import React from "react";
 
-const CustomButton: React.FC = ({ children }) => {
+interface CustomButtonProps {
+  children: React.ReactNode;
+}
+
+const CustomButton: React.FC<CustomButtonProps> = ({ children }) => {
   const cursorHandlers = useCursorType();
 
   return <button {...cursorHandlers}>{children}</button>;

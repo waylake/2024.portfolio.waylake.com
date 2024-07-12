@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 
 const projects = [
   {
@@ -82,7 +82,7 @@ const projects = [
 ];
 
 export default function Portfolio() {
-  const scrollContainerRef = useRef(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [scrollPercentage, setScrollPercentage] = useState(0);
 
   const handleScroll = () => {
@@ -166,7 +166,9 @@ function ProjectCard({ project }) {
         ))}
       </div>
       <div
-        className={`mt-4 transition-all duration-300 overflow-hidden ${isExpanded ? "max-h-[500px]" : "max-h-0"}`}
+        className={`mt-4 transition-all duration-300 overflow-hidden ${
+          isExpanded ? "max-h-[500px]" : "max-h-0"
+        }`}
       >
         <ul className="list-disc list-inside">
           {project.features.map((feature, index) => (
