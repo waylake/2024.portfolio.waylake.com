@@ -3,31 +3,59 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+  --accent-color: #4ecdc4;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  @apply bg-gradient-to-r from-red-400 to-teal-400 text-gray-800 dark:from-gray-800 dark:to-gray-700 dark:text-gray-200;
+  cursor: none; /* 기본 커서 숨기기 */
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+body,
+a,
+button,
+[role="button"] {
+  cursor: none !important;
+}
+
+/* 다른 요소들의 커서도 숨기기 */
+a,
+button,
+[role="button"],
+input,
+select,
+textarea {
+  cursor: none;
+}
+
+@layer base {
+  body {
+    @apply overflow-hidden;
+  }
+}
+
+@layer components {
+  .nav-link {
+    @apply mx-4 font-bold transition-colors duration-300 hover:text-accent-color;
+  }
+
+  .btn {
+    @apply bg-accent-color text-white px-6 py-2 rounded transition-colors duration-300 hover:bg-opacity-80;
+  }
+}
+
+.animated-bg span {
+  @apply absolute block w-5 h-5 bg-white bg-opacity-10;
+  animation: move 1s infinite linear;
+}
+
+@keyframes move {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-1000px) rotate(720deg);
+    opacity: 0;
   }
 }

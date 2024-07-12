@@ -8,13 +8,20 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        "accent-color": "#4ecdc4",
+      },
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "gradient-light": "linear-gradient(45deg, #ff6b6b, #4ecdc4)",
+        "gradient-dark": "linear-gradient(45deg, #2c3e50, #34495e)",
+      },
+      transitionDuration: {
+        "800": "800ms",
       },
     },
   },
-  plugins: [],
+  plugins: [require("tailwind-scrollbar-hide")],
+  darkMode: "class",
 };
+
 export default config;
