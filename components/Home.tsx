@@ -1,3 +1,8 @@
+"use client";
+
+import React from "react";
+import Typical from "react-typical";
+
 export default function Home() {
   return (
     <section className="w-screen h-full flex-shrink-0 flex items-center justify-center relative overflow-hidden bg-gradient-to-r from-red-400 to-teal-400 dark:from-gray-800 dark:to-gray-700">
@@ -21,7 +26,21 @@ export default function Home() {
         <h1 className="text-4xl font-light mb-4">
           안녕하세요, 저는 황도연입니다
         </h1>
-        <p className="text-xl mb-2">풀스택 개발자 | DevOps 엔지니어</p>
+        <div
+          className="text-xl mb-2"
+          style={{
+            height: "2em",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Typical
+            steps={["풀스택 개발자", 4000, "DevOps 엔지니어", 4000]}
+            loop={Infinity}
+            wrapper="p"
+          />
+        </div>
         <p className="text-lg">다양한 경험을 공유하며, 배우는 것을 즐깁니다</p>
       </div>
     </section>

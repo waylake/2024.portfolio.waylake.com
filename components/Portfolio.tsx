@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
+import { Tilt } from "react-tilt";
 
 const projects = [
   {
@@ -42,7 +43,7 @@ const projects = [
       "Express Rate Limit을 통한 요청 속도 제한",
       "Jest를 활용한 테스트 자동화",
     ],
-    link: "", // GitHub 링크가 제공되지 않았으므로 비워둡니다.
+    link: "",
   },
   {
     title: "Image Similarity Search System",
@@ -150,50 +151,52 @@ function ProjectCard({ project }) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <div className="bg-white bg-opacity-10 backdrop-blur-md rounded-lg p-6 transition-all duration-300 hover:shadow-lg">
-      <h3 className="text-xl font-semibold text-accent-color">
-        {project.title}
-      </h3>
-      <p className="mt-2 italic">{project.description}</p>
-      <div className="flex flex-wrap gap-2 mt-3">
-        {project.techStack.map((tech, index) => (
-          <span
-            key={index}
-            className="bg-gray-200 bg-opacity-20 px-2 py-1 rounded-full text-xs"
-          >
-            {tech}
-          </span>
-        ))}
-      </div>
-      <div
-        className={`mt-4 transition-all duration-300 overflow-hidden ${
-          isExpanded ? "max-h-[500px]" : "max-h-0"
-        }`}
-      >
-        <ul className="list-disc list-inside">
-          {project.features.map((feature, index) => (
-            <li key={index} className="mt-1">
-              {feature}
-            </li>
+    <Tilt className="Tilt" options={{ max: 25 }}>
+      <div className="bg-white bg-opacity-10 backdrop-blur-md rounded-lg p-6 transition-all duration-300 hover:shadow-lg">
+        <h3 className="text-xl font-semibold text-accent-color">
+          {project.title}
+        </h3>
+        <p className="mt-2 italic">{project.description}</p>
+        <div className="flex flex-wrap gap-2 mt-3">
+          {project.techStack.map((tech, index) => (
+            <span
+              key={index}
+              className="bg-gray-200 bg-opacity-20 px-2 py-1 rounded-full text-xs"
+            >
+              {tech}
+            </span>
           ))}
-        </ul>
-        {project.link && (
-          <a
-            href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-4 inline-block text-accent-color hover:underline"
-          >
-            프로젝트 링크
-          </a>
-        )}
+        </div>
+        <div
+          className={`mt-4 transition-all duration-300 overflow-hidden ${
+            isExpanded ? "max-h-[500px]" : "max-h-0"
+          }`}
+        >
+          <ul className="list-disc list-inside">
+            {project.features.map((feature, index) => (
+              <li key={index} className="mt-1">
+                {feature}
+              </li>
+            ))}
+          </ul>
+          {project.link && (
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-block text-accent-color hover:underline"
+            >
+              프로젝트 링크
+            </a>
+          )}
+        </div>
+        <button
+          onClick={() => setIsExpanded(!isExpanded)}
+          className="mt-4 bg-accent-color text-white px-4 py-2 rounded hover:bg-opacity-80 transition-colors duration-300"
+        >
+          {isExpanded ? "접기" : "자세히 보기"}
+        </button>
       </div>
-      <button
-        onClick={() => setIsExpanded(!isExpanded)}
-        className="mt-4 bg-accent-color text-white px-4 py-2 rounded hover:bg-opacity-80 transition-colors duration-300"
-      >
-        {isExpanded ? "접기" : "자세히 보기"}
-      </button>
-    </div>
+    </Tilt>
   );
 }
