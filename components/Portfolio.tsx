@@ -43,7 +43,7 @@ const projects = [
       "Express Rate Limit을 통한 요청 속도 제한",
       "Jest를 활용한 테스트 자동화",
     ],
-    link: "",
+    link: "https://github.com/waylake/delivery-app-backend.git",
   },
   {
     title: "Image Similarity Search System",
